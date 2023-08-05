@@ -49,38 +49,40 @@ const ViewLocalStorage = () => {
                         <h2 className='display-2'>View form in LocalStorage</h2>
                     </div>
                     <table className='table table-bordered table-striped' >
-                        {/* ... (rest of the table code) ... */}
+                       
                         <tbody>
-                            {/* ... (rest of the Firebase data rows) ... */}
-                            {/* Display data from LocalStorage */}
-                            {localData.map((item, index) => (
-                                <tr key={index}>
-                                    <th scope="row">{Object.keys(data).length + index + 1}</th>
-                                    <td>{item.name}</td>
-                                    <td>{item.phoneNumber}</td>
-                                    <td>{item.email}</td>
-                                    <td>
-                                        {item.profilePic && (
-                                            <img
-                                                src={item.profilePic}
-                                                alt='Profile Pic'
-                                                style={{ width: '100px', height: '100px', objectFit: 'cover' }}
-                                            />
-                                        )}
-                                    </td>
-                                    <td>{item.dateOfBirth}</td>
-                                    <td>
-                                        <Link to={`/updatefromLocal/${index}`}>
-                                            <a className='btn text-primary'>
-                                                <span className="fas fa-pencil-alt"></span>
+                           
+                            {Object.keys(data).map((id, index) => {
+                                return (
+                                    <tr key={id}>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{data[id].name}</td>
+                                        <td>{data[id].phoneNumber}</td>
+                                        <td>{data[id].email}</td>
+                                        <td>
+
+                                            {data[id].profilePic && (
+                                                <img
+                                                    src={data[id].profilePic}
+                                                    alt='Profile Pic'
+                                                    style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                                                />
+                                            )}
+                                        </td>
+                                        <td>{data[id].dateOfBirth}</td>
+                                        <td>
+                                            <Link to={`/updatefromLocal/${index}`}>
+                                                <a className='btn text-primary'>
+                                                    <span className="fas fa-pencil-alt"></span>
+                                                </a>
+                                            </Link>
+                                            <a className='btn text-danger' onClick={() => onDeleteLocal(index)}>
+                                                <i className='fas fa-trash-alt'></i>
                                             </a>
-                                        </Link>
-                                        <a className='btn text-danger' onClick={() => onDeleteLocal(index)}>
-                                            <i className='fas fa-trash-alt'></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            ))}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>

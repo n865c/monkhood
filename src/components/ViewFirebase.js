@@ -5,17 +5,6 @@ import { Link } from 'react-router-dom';
 const ViewFirebase = () => {
     const [data, setData] = useState({});
     useEffect(() => {
-        // database.ref("details").on("value", (snapshot) => {
-        //     if (snapshot.val() != null) {
-        //         setData({
-        //             ...snapshot.val(),
-        //         });
-
-        //     }
-        //     else {
-        //         snapshot({});
-        //     }
-        // });
         const fetchData = () => {
             database.ref("details").on("value", (snapshot) => {
                 if (snapshot.val() != null) {
