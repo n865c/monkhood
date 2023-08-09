@@ -4,6 +4,7 @@ import { database } from "../firebase";
 import { isEmpty } from "lodash"
 
 const Home = () => {
+    const history = useNavigate();
     const initialFormState = {
         name: '',
         phoneNumber: '',
@@ -47,6 +48,7 @@ const Home = () => {
                     console.log(err);
                 }
                 alert("Successfully updated");
+                history("/view2");
             });
         }
         setFormdata(initialFormState);
